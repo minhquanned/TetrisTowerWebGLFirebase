@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Tetris Tower WebGL Firebase</title>
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        background: #000;
+        height: 100%;
+        overflow: hidden;
+      }
+      #unity-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      #unity-canvas {
+        background: #000;
+        display: block;
+      }
+    </style>
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+      import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+      import { getDatabase, ref, push, set, query, orderByChild, limitToLast, get, child } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-database.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyDvifaQ95aZqPOltKzJV95DlcWYYjMrNdI",
+        authDomain: "tetris-tower-6740b.firebaseapp.com",
+        databaseURL: "https://tetris-tower-6740b-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "tetris-tower-6740b",
+        storageBucket: "tetris-tower-6740b.firebasestorage.app",
+        messagingSenderId: "230632011733",
+        appId: "1:230632011733:web:3d18c50378cc72f5102f5c",
+        measurementId: "G-JMDYK5EKH6"
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+      const db = getDatabase(app);
+
+      // Gắn vào window để .jslib gọi được
+      window._firebase = { auth, db, GoogleAuthProvider, signInWithPopup, signOut, ref, push, set, query, orderByChild, child, limitToLast, get };
+    </script>
+
+
+  </head>
+  <body>
+    <div id="unity-container">
+      <canvas id="unity-canvas" width="1080" height="1920" tabindex="-1"></canvas>
+    </div>
+
+    <script src="Build/TetrisTowerWebGLFirebase.loader.js"></script>
+    <script>
+      const canvas = document.querySelector("#unity-canvas");
+
+      function resizePortrait() {
+        const targetAspect = 1080 / 1920;
+        const windowAspect = window.innerWidth / window.innerHeight;
+        let newWidth, newHeight;
+
+        if (windowAspect > targetAspect) {
+          newHeight = window.innerHeight;
+          newWidth = newHeight * targetAspect;
+        } else {
+          newWidth = window.innerWidth;
+          newHeight = newWidth / targetAspect;
+        }
+
+        canvas.style.width = `${newWidth}px`;
+        canvas.style.height = `${newHeight}px`;
+      }
+
+      createUnityInstance(canvas, {
+        arguments: [],
+        dataUrl: "Build/TetrisTowerWebGLFirebase.data",
+        frameworkUrl: "Build/TetrisTowerWebGLFirebase.framework.js",
+        codeUrl: "Build/TetrisTowerWebGLFirebase.wasm",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "DefaultCompany",
+        productName: "Tetris Tower WebGL Firebase",
+        productVersion: "1.0.0",
+      }).then(() => {
+        resizePortrait();
+        window.addEventListener('resize', resizePortrait);
+      });
+    </script>
+  </body>
+</html>
