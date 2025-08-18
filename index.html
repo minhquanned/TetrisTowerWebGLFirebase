@@ -25,7 +25,7 @@
     </style>
     <script type="module">
       import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-      import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+      import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, signInWithRedirect, getRedirectResult, } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
       import { getDatabase, ref, push, set, query, orderByChild, limitToLast, get, child } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-database.js";
 
       const firebaseConfig = {
@@ -44,7 +44,7 @@
       const db = getDatabase(app);
 
       // Gắn vào window để .jslib gọi được
-      window._firebase = { auth, db, GoogleAuthProvider, signInWithPopup, signOut, ref, push, set, query, orderByChild, child, limitToLast, get };
+      window._firebase = { auth, db, GoogleAuthProvider, signInWithPopup, signOut, ref, push, set, query, orderByChild, child, limitToLast, get, signInWithRedirect: signInWithRedirect, getRedirectResult: getRedirectResult };
     </script>
 
 
