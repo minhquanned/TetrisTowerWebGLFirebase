@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "230632011733",
+    "firebase_url": "https://tetris-tower-6740b-default-rtdb.asia-southeast1.firebasedatabase.app",
     "project_id": "tetris-tower-6740b",
     "storage_bucket": "tetris-tower-6740b.firebasestorage.app"
   },
@@ -13,6 +14,22 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "230632011733-82vidt0hdag5e3uhp1eifagsenrogmt4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.intern.tetristower",
+            "certificate_hash": "40b51c832fe94b4541955833c4853fd6429bb0d2"
+          }
+        },
+        {
+          "client_id": "230632011733-q3138k8rg6o2smvqci74233vdoh40v4i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.intern.tetristower",
+            "certificate_hash": "4c82f5fe8da59d0a7993362aa40952a78cf1dacc"
+          }
+        },
         {
           "client_id": "230632011733-ln5g9n7dgubbskktfggu6an3fcdpdu00.apps.googleusercontent.com",
           "client_type": 3
