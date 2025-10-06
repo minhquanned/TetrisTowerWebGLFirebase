@@ -27,13 +27,14 @@
       import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
       import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, signInWithRedirect, getRedirectResult, } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
       import { getDatabase, ref, push, set, update, query, orderByChild, limitToLast, get, child } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-database.js";
+      import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-storage.js";
 
       const firebaseConfig = {
         apiKey: "AIzaSyDvifaQ95aZqPOltKzJV95DlcWYYjMrNdI",
         authDomain: "tetris-tower-6740b.firebaseapp.com",
         databaseURL: "https://tetris-tower-6740b-default-rtdb.asia-southeast1.firebasedatabase.app",
         projectId: "tetris-tower-6740b",
-        storageBucket: "tetris-tower-6740b.firebasestorage.app",
+        storageBucket: "tetris-tower-6740b.appspot.app",
         messagingSenderId: "230632011733",
         appId: "1:230632011733:web:3d18c50378cc72f5102f5c",
         measurementId: "G-JMDYK5EKH6"
@@ -42,9 +43,31 @@
       const app = initializeApp(firebaseConfig);
       const auth = getAuth(app);
       const db = getDatabase(app);
+      const storage = getStorage(app);
 
       // Gắn vào window để .jslib gọi được
-      window._firebase = { auth, db, GoogleAuthProvider, signInWithPopup, signOut, ref, push, set, update, query, orderByChild, child, limitToLast, get, signInWithRedirect: signInWithRedirect, getRedirectResult: getRedirectResult };
+      window._firebase = { 
+        auth, 
+        db, 
+        storage, 
+        GoogleAuthProvider, 
+        signInWithPopup, 
+        signOut, 
+        ref, 
+        push, 
+        set, 
+        update, 
+        query, 
+        orderByChild, 
+        child, 
+        limitToLast, 
+        get, 
+        signInWithRedirect: signInWithRedirect, 
+        getRedirectResult: getRedirectResult,
+        storageRef,
+        uploadBytes,
+        getDownloadURL
+      };
     </script>
 
 
